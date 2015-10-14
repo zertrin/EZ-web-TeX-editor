@@ -39,7 +39,7 @@ function _$_(title,texInsert,texDisp,latexRender,colspan){
 	if(!title) return {'title':'','img':'','data':''}; //empty button
 	if(!texInsert||texInsert==0) texInsert = title;
 	if(!texDisp||texDisp==0) texDisp = texInsert;
-	if(latexRender=='codecogs') latexRender = 'http://latex.codecogs.com/png.latex?@'; //CodeCogs LaTeX renderer
+	if(latexRender=='codecogs') latexRender = '//latex.codecogs.com/png.latex?@'; //CodeCogs LaTeX renderer
 	if(!colspan||colspan==0) colspan=1;
 	texDisp = texDisp.replace(/\@/g,'{\\small\\bigcirc}'); //Change @ to a circle.
 	if(atLocal){
@@ -48,7 +48,7 @@ function _$_(title,texInsert,texDisp,latexRender,colspan){
 		.replace(/( |\{|\})+/g,'').replace(/\+/g,'P').replace(/\-/g,'M').replace(/\>/g,'R')
 		.replace(/\</g,'L').replace(/\=/g,'EQ').replace(/\./g,'D').replace(/([A-Z])/g,'!$1')};
 	}else if(!latexRender||latexRender==0){
-		latexRender = 'http://chart.googleapis.com/chart?cht=tx&chl=@'; //Default LaTeX renderer.
+		latexRender = '//chart.googleapis.com/chart?cht=tx&chl=@'; //Default LaTeX renderer.
 	}
 	texDisp = latexRender.replace('@',encodeFunction(texfy(texDisp)));
 	return {'title':title,'img':texDisp,'data':texInsert,'colspan':colspan};
